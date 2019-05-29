@@ -1,0 +1,29 @@
+{
+  "name": "gorgonian",
+  "version": "0.1.0",
+  "description": "service for east river water data",
+  "main": "service.js",
+  "scripts": {
+    "start": "node service.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reaktor/gorgonian.git"
+  },
+  "keywords": [
+    "pluspool",
+    "service",
+    "api"
+  ],
+  "author": "Jonathan Dahan <micro@reaktor.fi>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reaktor/gorgonian/issues"
+  },
+  "homepage": "https://github.com/reaktor/gorgonian#readme",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-socket-2": "^1.1.0"
+  }
+}
