@@ -1,9 +1,3 @@
-service that shares some data about the condition of the east river
+package to parse out datagarrison text format
 
-check out [#pluspool](https://reaktor.slack.com/pluspool)
-
-development philosophy is do as little as possible, then do less
-
-    npm install
-    npm start
-    curl localhost:3000
+see [test.js](./test.js) for usage

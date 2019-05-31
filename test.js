@@ -1,0 +1,6 @@
+const { parse } = require('./datagarrison.js')
+const fs = require('fs')
+const file = fs.readFileSync('./351579054854805_live.txt')
+const data = file.toString()
+const parsed = parse(data)
+console.dir(parsed)

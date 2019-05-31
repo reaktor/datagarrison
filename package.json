@@ -1,29 +1,28 @@
 {
-  "name": "gorgonian",
+  "name": "datagarrison",
   "version": "0.1.0",
-  "description": "service for east river water data",
-  "main": "service.js",
+  "description": "tool for extracting datagarrison format",
+  "main": "datagarrison.js",
   "scripts": {
-    "start": "node service.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "npm run lint && node test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reaktor/gorgonian.git"
+    "url": "git+https://github.com/reaktor/datagarrison.git"
   },
   "keywords": [
     "pluspool",
-    "service",
-    "api"
+    "csv"
   ],
   "author": "Jonathan Dahan <micro@reaktor.fi>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/reaktor/gorgonian/issues"
+    "url": "https://github.com/reaktor/datagarrison/issues"
   },
-  "homepage": "https://github.com/reaktor/gorgonian#readme",
-  "dependencies": {
-    "koa": "^2.7.0",
-    "koa-socket-2": "^1.1.0"
+  "homepage": "https://github.com/reaktor/datagarrison#readme",
+  "devDependencies": {
+    "standard": "^12.0.1"
   }
 }
