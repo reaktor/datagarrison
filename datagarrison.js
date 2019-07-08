@@ -1,4 +1,19 @@
 // see tests/datagarrison.js for a usage example
+const fetch = require('isomorphic-unfetch')
+
+const get = stream => fetchStream(stream).then(parse)
+
+const fetchStream = ({ user, stream }) => {
+  const endpoint = `https://datagarrison.com/users/${user}/${stream}/temp/${stream}_live.txt`
+
+  return fetch(endpoint)
+    .then(response => {
+      const { status, ok } = response
+      if (ok) return response.text()
+
+      throw new Error(`Request rejected with status ${status}`)
+    })
+}
 
 const parse = data => {
   const lines = data.split(`\r\n`)
@@ -24,10 +39,4 @@ const parse = data => {
   }
 }
 
-const find = timestamp => {
-  const fifteenMinutesInMs = 15 * 60 * 1000
-  const indexBy15Minutes = timestamp % fifteenMinutesInMs
-  return indexBy15Minutes
-}
-
-module.exports = { parse, find }
+module.exports = { get, parse }

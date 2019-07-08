@@ -1,6 +1,6 @@
 {
   "name": "datagarrison",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "tool for extracting datagarrison format",
   "main": "datagarrison.js",
   "scripts": {
@@ -24,5 +24,8 @@
   "homepage": "https://github.com/reaktor/datagarrison#readme",
   "devDependencies": {
     "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0"
   }
 }
