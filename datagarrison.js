@@ -14,7 +14,7 @@ const fetchStream = ({ user, stream }) => {
 }
 
 const parse = data => {
-  const lines = data.split(`\r\n`)
+  const lines = data.split('\r\n')
 
   const name = lines.shift().trim()
   // todo: should we include the timezone in the dates?
