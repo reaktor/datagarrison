@@ -1,6 +1,4 @@
 // see tests/datagarrison.js for a usage example
-const fetch = require('isomorphic-unfetch')
-
 const get = stream => fetchStream(stream).then(parse)
 
 const fetchStream = ({ user, stream }) => {
