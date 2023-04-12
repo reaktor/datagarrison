@@ -1,16 +1,35 @@
 // see tests/datagarrison.js for a usage example
-const get = stream => fetchStream(stream).then(parse)
 
-const fetchStream = ({ user, stream }) => {
+// default timeout of 15 seconds
+const defaultTimeout = 1000 * 15
+
+/**
+ *
+ * @param {{user: number, stream: number}} stream - user and stream/wireless id
+ * @param {number} [timeoutInMs=15000] - maximum request time out in milliseconds
+ * @returns {Promise<{timezone: string, name: string, header: [string], samples: [Object]}>}
+ */
+const get = (stream, timeoutInMs = defaultTimeout) => fetchStream(stream, timeoutInMs).then(parse)
+
+const fetchStream = ({ user, stream }, ms) => {
   const endpoint = `https://datagarrison.com/users/${user}/${stream}/temp/${stream}_live.txt`
 
-  return fetch(endpoint)
-    .then(response => {
-      const { status, ok } = response
-      if (ok) return response.text()
+  // set up Abort controller with a custom timeout
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), ms)
 
-      throw new Error(`Request rejected with status ${status}`)
-    })
+  console.log('using local stream')
+  return fetch(endpoint, {
+    signal: controller.signal // assign controller's abort signal so the request times out after a specified time
+  }).then(response => {
+    const { status, ok } = response
+    if (ok) return response.text()
+
+    throw new Error(`Request rejected with status ${status}`)
+  }).finally(() => {
+    // clear the timeout on success or failure
+    clearTimeout(timeoutId)
+  })
 }
 
 const parse = data => {
