@@ -18,7 +18,6 @@ const fetchStream = ({ user, stream }, ms) => {
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), ms)
 
-  console.log('using local stream')
   return fetch(endpoint, {
     signal: controller.signal // assign controller's abort signal so the request times out after a specified time
   }).then(response => {
